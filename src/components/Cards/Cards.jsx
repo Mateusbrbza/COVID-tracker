@@ -3,11 +3,15 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import CountUp from 'react-countup';
 
 import styles from './Cards.module.css';
 
-const Cards = (props) => {
-  console.log(props);
+const Cards = ({data: {confirmed, deaths, lastUpdate}}) => {
+  console.log(confirmed)
+  if(!confirmed) {
+    return 'Carregando...';
+  }
 
   return (
     <div className={styles.container} >
@@ -18,10 +22,10 @@ const Cards = (props) => {
               Infectados
             </Typography>
             <Typography variant="h5" >
-              Dados
+              <CountUp start={0} end={confirmed.value} duration={2.5} separator="," />
             </Typography>
             <Typography color="textSecondary">
-              Data
+              {new Date(lastUpdate).toDateString()}
             </Typography>
             <Typography variant="body2">
               Numero de casos ativos de covid
@@ -34,10 +38,10 @@ const Cards = (props) => {
               Mortes
             </Typography>
             <Typography variant="h5" >
-              Dados
+              <CountUp start={0} end={deaths.value} duration={2.5} separator="," />
             </Typography>
             <Typography color="textSecondary">
-              Data
+              {new Date(lastUpdate).toDateString()}
             </Typography>
             <Typography variant="body2">
               Numeros de mortes pelo COVID-19
