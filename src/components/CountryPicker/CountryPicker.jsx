@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { NativeSelect, FormControl } from '@material-ui/core';
+import NativeSelect from '@mui/material/NativeSelect';
+import FormControl from '@mui/material/FormControl'
+
 
 import { fetchCountries } from '../../api';
 
